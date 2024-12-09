@@ -1,0 +1,98 @@
+<div class="bg-white shadow-card p-5 rounded-md">
+  <div class="flex justify-between mb-5">
+    <input type="text" placeholder="Search product"
+      class="border-gray-300 focus:ring-primary-hover focus:border-primary rounded-lg text-sm outline-none">
+
+    <div class="flex items-center gap-4">
+      <div>
+        <button id="dropdownExport" data-dropdown-toggle="dropdown" type="button"
+          class="focus-within:-translate-y-[2px] transition-all flex items-center text-gray-600 font-medium bg-gray-200 p-2 px-4 rounded-md">
+          <div class="text-sm">Export</div>
+          <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 4 4 4-4" />
+          </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdown"
+          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownExport">
+            <li class="cursor-pointer">
+              <button
+                class="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">CSV</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a [routerLink]="'details'" class="p-2 px-4 bg-primary text-white rounded-lg text-sm">+
+        Add product
+      </a>
+    </div>
+  </div>
+
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            <input type="checkbox" [checked]="false"
+              class="focus:!ring-0 focus:ring-transparent focus:outline-none cursor-pointer checked:bg-primary rounded-sm">
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Product name
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Color
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Category
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Price
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of [1,2,3]" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="px-6 py-4">
+            <input type="checkbox" [checked]="false"
+              class="focus:!ring-0 focus:ring-transparent focus:outline-none cursor-pointer checked:bg-primary rounded-sm">
+          </td>
+          <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            Apple MacBook Pro 17"
+          </td>
+          <td class="px-6 py-4">
+            Silver
+          </td>
+          <td class="px-6 py-4">
+            Laptop
+          </td>
+          <td class="px-6 py-4">
+            $2999
+          </td>
+          <td>
+            <div class="w-full flex items-center justify-center gap-3 text-lg">
+              <button class="hover:text-primary">
+                <a [routerLink]="'details'">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+              </button>
+              <button class="hover:text-red1">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="w-full flex justify-end mt-10">
+    <app-pagination></app-pagination>
+  </div>
+</div>

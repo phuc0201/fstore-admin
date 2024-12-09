@@ -1,0 +1,24 @@
+<aside class="w-64 h-screen flex flex-col px-2 py-5 gap-5 shadow-card">
+  <div class="flex flex-col gap-3 items-center">
+    <div class="w-1/2 aspect-square rounded-full">
+      <img src="https://cdn.britannica.com/05/236505-050-17B6E34A/Elon-Musk-2022.jpg?w=385"
+        class="w-auto h-full object-cover rounded-full" />
+    </div>
+    <div class="text-xl font-semibold">Trinh Hoang Phuc</div>
+  </div>
+
+  <div class="sidebar__menu-content flex-1 overflow-y-scroll">
+    <ul class="menu">
+      <ng-container *ngFor="let item of menuList">
+        <li class="menu-sub">
+          <a [routerLink]="[item.link]"
+            class="flex items-center gap-3 p-2 px-3 rounded-md hover:bg-gray-100 mb-1 text-gray-600"
+            routerLinkActive="active" [routerLinkActiveOptions]="{exact: item.link==='/'}">
+            <i [ngClass]="item.icon"></i>
+            <div>{{ item.name }}</div>
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</aside>

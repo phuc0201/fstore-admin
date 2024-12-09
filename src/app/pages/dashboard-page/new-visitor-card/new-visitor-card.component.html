@@ -1,0 +1,8 @@
+<div id="chart" class="absolute right-0 -bottom-6">
+  <apx-chart
+    *ngIf="chartOptions.series && chartOptions.chart && chartOptions.dataLabels && chartOptions.yaxis && chartOptions.plotOptions && chartOptions.xaxis && chartOptions.colors && chartOptions.legend && chartOptions.grid"
+    [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis"
+    [legend]="chartOptions.legend" [colors]="chartOptions.colors" [grid]="chartOptions.grid">
+  </apx-chart>
+</div>
