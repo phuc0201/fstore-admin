@@ -1,0 +1,170 @@
+<div class="bg-white shadow-card p-5 rounded-md">
+  <div class="flex justify-between items-center">
+    <div>
+      <h1 class="text-gray-600 text-xl font-medium">Add a new Product</h1>
+      <span class="text-gray-400 text-sm">Orders placed across your store</span>
+    </div>
+    <div>
+      <button
+        class="inline-block bg-gray-200 hover:bg-gray-400 hover:text-white mr-4 active:translate-y-[1px] hover:shadow-lg hover:-translate-y-[1px] transition-all p-2 px-3 rounded-md text-gray-500 text-sm">Discard</button>
+      <button (click)="addNewProduct()"
+        class="inline-block bg-primary active:translate-y-[1px] hover:shadow-lg hover:-translate-y-[1px] transition-all p-2 px-3 rounded-md text-white text-sm">Publish
+        product</button>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5">
+  <form [formGroup]="productForm">
+    <div class="flex gap-5">
+      <div class="w-1/2 grid gap-5 h-fit">
+        <div class="h-fit bg-white shadow-card p-5 rounded-md grid gap-4">
+          <!-- PRODUCT INFORMATION -->
+          <div>
+            <h1 class="text-gray-600 font-medium mb-5">Product information</h1>
+            <div class="flex items-center gap-4">
+              <div class="w-2/3">
+                <label for="productName" class="block text-sm text-gray-500 mb-2">Name</label>
+                <input id="productName" formControlName="productName" type="text"
+                  class="block w-full border-gray-300 rounded-md text-sm outline-none focus:ring-primary-hover focus:border-primary transition-all">
+              </div>
+              <div class="w-1/3">
+                <label for="price" class="block text-sm text-gray-500 mb-2">Price</label>
+                <input id="price" formControlName="price" type="number"
+                  class="block w-full border-gray-300 rounded-md text-sm outline-none focus:ring-primary-hover focus:border-primary transition-all">
+              </div>
+            </div>
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div>
+            <label for="description" class="block mb-2 text-sm text-gray-500">Description</label>
+            <textarea id="description" rows="16" [formControlName]="'description'"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-hover focus:border-primary transition-all outline-none"
+              placeholder="Write your thoughts here..."></textarea>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-card rounded-md p-5">
+          <h1 class="text-gray-600 font-medium mb-5">Product image</h1>
+
+          <ng-container *ngFor="let item of variants.controls; let index = index">
+            <div class="mb-10">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="text-gray-500">Color: {{getVariantColor(index)}}</div>
+                <button [style.background]="getVariantHex(index)" class="w-6 aspect-square rounded-md"></button>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2">
+                <ng-container *ngIf="item.get('photo')?.value">
+                  <ng-container *ngFor="let img of item.get('photo')?.value; let photoIndex = index">
+                    <div class="relative w-24 h-24 overflow-hidden aspect-square rounded-md">
+                      <img [src]="img" alt="" class="w-full h-full object-cover rounded-md">
+
+                      <button (click)="removeVariantImage(index, photoIndex)"
+                        class="absolute top-0 right-0 -translate-y-1 z-10">
+                        <i class="fa-solid fa-circle-minus text-red "></i>
+                      </button>
+                    </div>
+                  </ng-container>
+                </ng-container>
+
+                <div>
+                  <input #imageSelector (change)="onFileSelected($event, index)" multiple accept="image/*" type="file"
+                    class="hidden">
+                  <button (click)="imageSelector.click()"
+                    class="w-24 aspect-square border-2 border-dashed border-gray-300 rounded-md">
+                    <i class="fa-solid fa-plus text-gray-400"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="w-1/2">
+        <!-- VARIANTS -->
+        <div [formArrayName]="'variants'" class="bg-white shadow-card p-5 rounded-md">
+          <h1 class="text-gray-600 font-medium mb-5">Variants</h1>
+          <div class="flex flex-col gap-5">
+            <ng-container *ngFor="let item of variants.controls; let variantIndex = index">
+              <div [formGroupName]="variantIndex">
+                <div class="flex items-end justify-between">
+                  <div class="flex items-center flex-wrap gap-4">
+                    <div class="">
+                      <label class="block mb-2 text-sm text-gray-500">Color Name</label>
+                      <div class="flex items-center">
+                        <input id="" [formControlName]="'variantColor'" type="text"
+                          class="block border-gray-300 rounded-md text-sm outline-none focus:ring-primary-hover focus:border-primary transition-all">
+                      </div>
+                    </div>
+
+                    <div class="">
+                      <label class="block mb-2 text-sm text-gray-500">Color Hex</label>
+                      <div class="flex items-center">
+                        <div class="border min-w-52 border-gray-300 p-2 text-sm rounded-md text-gray-400 mr-3">
+                          <span>{{getVariantHex(variantIndex)}}</span>
+                        </div>
+                        <button (click)="colorPicker.click()" [style.background]="getVariantHex(variantIndex)"
+                          class="w-8 rounded-sm aspect-square bg-primary">
+                          <input #colorPicker (colorPickerChange)="setVariantHex(variantIndex, $event)"
+                            [colorPicker]="getVariantHex(variantIndex)" class="w-0" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button *ngIf="variantIndex!==0" type="button" (click)="removeVariant(variantIndex)"
+                    class="bg-red text-white font-medium rounded-md h-6 aspect-square text-sm">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                </div>
+
+                <div class="mt-5">
+                  <label class="block mb-2 text-sm text-gray-500">Size</label>
+                  <div class="flex flex-col gap-4">
+                    <ng-container *ngFor="let item of getListSize(variantIndex).controls; let index = index">
+                      <div [formArrayName]="'listSize'" class="flex items-center gap-4">
+                        <button class="text-gray-500 h-[38px] w-32 rounded-md border border-gray-300">{{ size[index]
+                          }}</button>
+
+                        <div class="w-full">
+                          <input type="number" [formControlName]="index" placeholder="1000"
+                            class="block w-full placeholder:text-gray-300 border-gray-300 rounded-md text-sm outline-none focus:ring-primary-hover focus:border-primary transition-all">
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <button type="button" (click)="addVariant()"
+            class="bg-primary text-white font-medium rounded-md p-2 px-4 text-sm mt-5">
+            <i class="fa-solid fa-plus"></i>
+            Add another variant
+          </button>
+        </div>
+
+        <!-- <div class="shadow-card rounded-md p-5 bg-white">
+          <h1 class="text-md font-medium text-gray-500 mb-5">Product Image</h1>
+
+          <input multiple #imageSelector type="file" class="hidden">
+          <div (click)="imageSelector.click()"
+            class="p-4 py-28 cursor-pointer border-2 rounded-md border-dashed flex flex-col items-center gap-4">
+            <i class="fa-solid fa-cloud-arrow-up text-gray-400"></i>
+            <div class="text-xl text-gray-600 font-medium">Drag and drop your image here</div>
+            <span class="text-sm text-gray-400">or</span>
+            <button class="p-2 px-3 text-primary bg-primary-hover text-sm rounded-md">Browse image</button>
+          </div>
+
+        </div> -->
+
+
+
+      </div>
+    </div>
+  </form>
+</div>
