@@ -38,6 +38,12 @@ const routes: Routes = [
         data: { breadcrumb: 'Order' },
       },
       {
+        path: 'promotion',
+        loadChildren: () => import('./promotion-page/promotion-page.module').then(m => m.PromotionPageModule),
+        title: 'Review',
+        data: { breadcrumb: 'Promotion' },
+      },
+      {
         path: 'manage-review',
         loadChildren: () => import('./manage-review-page/manage-review-page.module').then(m => m.ManageReviewPageModule),
         title: 'Review',

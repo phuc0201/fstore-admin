@@ -58,10 +58,6 @@ export class FormAddProductComponent implements OnInit {
       productDTO.productName = this.productForm.get('productName')?.value;
       productDTO.variants = this.productForm.get('variants')?.value;
       console.log(productDTO);
-
-      // this.productSrv.createProduct(productDTO).subscribe(res => {
-      //   console.log(res);
-      // });
     }
   }
 

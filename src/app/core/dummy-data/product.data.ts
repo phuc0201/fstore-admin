@@ -1,159 +1,74 @@
-[
+export const productData = [
   {
-    "productId": 1,
-    "productName": "Áo thun nam",
-    "urlSlug": "Ao-thun-nam-1",
-    "description": "Áo thun nam vip pro no1",
-    "price": "150000",
-    "sold": 0,
-    "promotionPrice": 120000,
-    "createdAt": "2024-10-31T13:56:21.298Z",
-    "updatedAt": "2024-10-31T19:41:18.000Z",
-    "variants": [
-      {
-        "variantId": 2,
-        "variantColor": "Xanh",
-        "variantHex": "",
-        "sizeStockQuantity": {
-          "id": 2,
-          "s": 100,
-          "m": 100,
-          "l": 100,
-          "xl": 100,
-          "xxl": 100
-        }
-      },
-      {
-        "variantId": 1,
-        "variantColor": "Đỏ",
-        "variantHex": "",
-        "sizeStockQuantity": {
-          "id": 1,
-          "s": 100,
-          "m": 100,
-          "l": 100,
-          "xl": 100,
-          "xxl": 100
-        }
-      }
-    ],
-    "category": null,
-    "promotion": {
-      "promotionId": 16,
-      "promotionName": "Summer Sale",
-      "promotionDescription": "Discount on summer collection",
-      "promotionStartDate": "2023-06-01T07:00:00.000Z",
-      "promotionEndDate": "2023-07-01T07:00:00.000Z",
-      "promotionStatus": true,
-      "promotionType": "PERCENTAGE",
-      "promotionValue": 20,
-      "promotionMaxValue": 50000
-    }
+    "id": 101,
+    "name": "Áo Thun Basic",
+    "description": "Áo thun unisex chất liệu cotton thoáng mát, phù hợp cho cả nam và nữ.",
+    "price": 199000,
+    "quantity": 50,
+    "categoryId": 1,
+    "image": "https://example.com/images/ao-thun-basic.jpg"
   },
   {
-    "productId": 2,
-    "productName": "Áo thun nam",
-    "urlSlug": "Ao-thun-nam-2",
-    "description": "Áo thun nam vip pro no1",
-    "price": "150000",
-    "sold": 0,
-    "promotionPrice": 120000,
-    "createdAt": "2024-10-31T15:01:41.286Z",
-    "updatedAt": "2024-10-31T19:41:18.000Z",
-    "variants": [
-      {
-        "variantId": 4,
-        "variantColor": "Xanh",
-        "variantHex": "",
-        "sizeStockQuantity": {
-          "id": 4,
-          "s": 100,
-          "m": 100,
-          "l": 100,
-          "xl": 100,
-          "xxl": 100
-        }
-      },
-      {
-        "variantId": 3,
-        "variantColor": "Đỏ",
-        "variantHex": "",
-        "sizeStockQuantity": {
-          "id": 3,
-          "s": 100,
-          "m": 100,
-          "l": 100,
-          "xl": 100,
-          "xxl": 100
-        }
-      }
-    ],
-    "category": {
-      "categoryId": 2,
-      "categoryName": "Áo Nam",
-      "urlSlug": "",
-      "parent": {
-        "categoryId": 1,
-        "categoryName": "Nam",
-        "urlSlug": ""
-      }
-    },
-    "promotion": {
-      "promotionId": 16,
-      "promotionName": "Summer Sale",
-      "promotionDescription": "Discount on summer collection",
-      "promotionStartDate": "2023-06-01T07:00:00.000Z",
-      "promotionEndDate": "2023-07-01T07:00:00.000Z",
-      "promotionStatus": true,
-      "promotionType": "PERCENTAGE",
-      "promotionValue": 20,
-      "promotionMaxValue": 50000
-    }
+    "id": 102,
+    "name": "Áo Thun In Hình",
+    "description": "Áo thun thời trang với hình in cá tính.",
+    "price": 250000,
+    "quantity": 30,
+    "categoryId": 1,
+    "image": "https://example.com/images/ao-thun-in-hinh.jpg"
   },
   {
-    "productId": 3,
-    "productName": "Áo thun nam",
-    "urlSlug": "Ao-thun-nam-3",
-    "description": "Áo thun nam vip pro no1",
-    "price": "150000",
-    "sold": 0,
-    "promotionPrice": null,
-    "createdAt": "2024-12-08T13:17:39.456Z",
-    "updatedAt": "2024-12-08T13:17:40.000Z",
-    "variants": [
-      {
-        "variantId": 6,
-        "variantColor": "Xanh",
-        "variantHex": "",
-        "sizeStockQuantity": {
-          "id": 6,
-          "s": 100,
-          "m": 100,
-          "l": 100,
-          "xl": 100,
-          "xxl": 100
-        }
-      },
-      {
-        "variantId": 5,
-        "variantColor": "Đỏ",
-        "variantHex": "",
-        "sizeStockQuantity": {
-          "id": 5,
-          "s": 100,
-          "m": 100,
-          "l": 100,
-          "xl": 100,
-          "xxl": 100
-        }
-      }
-    ],
-    "category": {
-      "categoryId": 1,
-      "categoryName": "Nam",
-      "urlSlug": "",
-      "parent": null
-    },
-    "promotion": null
+    "id": 201,
+    "name": "Quần Jean Skinny",
+    "description": "Quần jean bó sát, co giãn tốt, dễ dàng phối đồ.",
+    "price": 350000,
+    "quantity": 20,
+    "categoryId": 2,
+    "image": "https://example.com/images/quan-jean-skinny.jpg"
+  },
+  {
+    "id": 202,
+    "name": "Quần Jean Rách",
+    "description": "Phong cách trẻ trung với mẫu quần jean rách gối thời thượng.",
+    "price": 400000,
+    "quantity": 15,
+    "categoryId": 2,
+    "image": "https://example.com/images/quan-jean-rach.jpg"
+  },
+  {
+    "id": 301,
+    "name": "Giày Thể Thao Classic",
+    "description": "Giày thể thao phong cách cổ điển, phù hợp cho mọi hoạt động.",
+    "price": 500000,
+    "quantity": 40,
+    "categoryId": 3,
+    "image": "https://example.com/images/giay-the-thao-classic.jpg"
+  },
+  {
+    "id": 302,
+    "name": "Giày Chạy Bộ Cao Cấp",
+    "description": "Giày chạy bộ nhẹ nhàng, hỗ trợ tối đa cho bàn chân.",
+    "price": 750000,
+    "quantity": 25,
+    "categoryId": 3,
+    "image": "https://example.com/images/giay-chay-bo.jpg"
+  },
+  {
+    "id": 401,
+    "name": "Mũ Lưỡi Trai",
+    "description": "Mũ lưỡi trai phong cách trẻ trung, chống nắng tốt.",
+    "price": 120000,
+    "quantity": 50,
+    "categoryId": 4,
+    "image": "https://example.com/images/mu-luoi-trai.jpg"
+  },
+  {
+    "id": 402,
+    "name": "Túi Tote",
+    "description": "Túi tote thời trang, tiện lợi khi đi học hoặc đi chơi.",
+    "price": 150000,
+    "quantity": 35,
+    "categoryId": 4,
+    "image": "https://example.com/images/tui-tote.jpg"
   }
 ];

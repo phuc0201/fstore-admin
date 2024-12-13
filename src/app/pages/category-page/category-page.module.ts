@@ -1,23 +1,36 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryPageComponent } from './category-page.component';
+import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
+import { FormNewCategoryComponent } from './form-new-category/form-new-category.component';
+import { ListCategoryComponent } from './list-category/list-category.component';
+
+const plugins = [
+  PaginationComponent
+];
 
 const routes: Routes = [
   {
     path: '',
-    component: CategoryPageComponent,
+    component: ListCategoryComponent,
     data: { breadcrumb: '' }
+  },
+  {
+    path: 'new',
+    component: FormNewCategoryComponent,
+    data: { breadcrumb: 'New' }
   }
 ];
 
 @NgModule({
   declarations: [
-    CategoryPageComponent
+    FormNewCategoryComponent,
+    ListCategoryComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    plugins
   ]
 })
 export class CategoryPageModule { }

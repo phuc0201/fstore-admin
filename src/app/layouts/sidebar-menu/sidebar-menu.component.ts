@@ -49,9 +49,9 @@ export class SidebarMenuComponent {
     },
     {
       id: 6,
-      link: '/manage-review',
-      icon: 'fa-solid fa-star-half-stroke',
-      name: 'Manage Review',
+      link: '/promotion',
+      icon: 'fa-solid fa-percent',
+      name: 'Promotion',
     },
   ];
 }

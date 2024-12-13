@@ -17,7 +17,7 @@
 <div class="mt-5">
   <form [formGroup]="productForm">
     <div class="flex gap-5">
-      <div class="w-1/2 grid gap-5 h-fit">
+      <div class="w-2/3 grid gap-5 h-fit">
         <div class="h-fit bg-white shadow-card p-5 rounded-md grid gap-4">
           <!-- PRODUCT INFORMATION -->
           <div>
@@ -39,51 +39,12 @@
           <!-- DESCRIPTION -->
           <div>
             <label for="description" class="block mb-2 text-sm text-gray-500">Description</label>
-            <textarea id="description" rows="16" [formControlName]="'description'"
+            <textarea id="description" rows="10" [formControlName]="'description'"
               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-hover focus:border-primary transition-all outline-none"
               placeholder="Write your thoughts here..."></textarea>
           </div>
         </div>
 
-        <div class="bg-white shadow-card rounded-md p-5">
-          <h1 class="text-gray-600 font-medium mb-5">Product image</h1>
-
-          <ng-container *ngFor="let item of variants.controls; let index = index">
-            <div class="mb-10">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="text-gray-500">Color: {{getVariantColor(index)}}</div>
-                <button [style.background]="getVariantHex(index)" class="w-6 aspect-square rounded-md"></button>
-              </div>
-
-              <div class="flex flex-wrap items-center gap-2">
-                <ng-container *ngIf="item.get('photo')?.value">
-                  <ng-container *ngFor="let img of item.get('photo')?.value; let photoIndex = index">
-                    <div class="relative w-24 h-24 overflow-hidden aspect-square rounded-md">
-                      <img [src]="img" alt="" class="w-full h-full object-cover rounded-md">
-
-                      <button (click)="removeVariantImage(index, photoIndex)"
-                        class="absolute top-0 right-0 -translate-y-1 z-10">
-                        <i class="fa-solid fa-circle-minus text-red "></i>
-                      </button>
-                    </div>
-                  </ng-container>
-                </ng-container>
-
-                <div>
-                  <input #imageSelector (change)="onFileSelected($event, index)" multiple accept="image/*" type="file"
-                    class="hidden">
-                  <button (click)="imageSelector.click()"
-                    class="w-24 aspect-square border-2 border-dashed border-gray-300 rounded-md">
-                    <i class="fa-solid fa-plus text-gray-400"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-
-      <div class="w-1/2">
         <!-- VARIANTS -->
         <div [formArrayName]="'variants'" class="bg-white shadow-card p-5 rounded-md">
           <h1 class="text-gray-600 font-medium mb-5">Variants</h1>
@@ -146,6 +107,62 @@
             <i class="fa-solid fa-plus"></i>
             Add another variant
           </button>
+        </div>
+      </div>
+
+      <div class="w-1/3">
+        <div class="bg-white shadow-card rounded-md p-5 mb-5">
+          <div class="text-gray-600 font-medium mb-5">Category</div>
+          <button class="relative p-2 px-4 w-full border border-gray-300 rounded-md flex justify-between group">
+            <span>Nam</span>
+            <span>
+              <i class="fa-solid fa-angle-down"></i>
+            </span>
+            <div
+              class="absolute hidden group-focus:block top-full translate-y-1 left-0 right-0 rounded-md shadow-card text-start bg-white z-10">
+              <div class="p-2 px-4">Nữ</div>
+              <div class="p-2 px-4">Trẻ em</div>
+              <div class="p-2 px-4">Bộ sưu tập</div>
+              <div class="p-2 px-4">Đồng phục</div>
+            </div>
+          </button>
+        </div>
+
+        <div class="bg-white shadow-card rounded-md p-5">
+          <h1 class="text-gray-600 font-medium mb-5">Product image</h1>
+
+          <ng-container *ngFor="let item of variants.controls; let index = index">
+            <div class="mb-10">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="text-gray-500">Color: {{getVariantColor(index)}}</div>
+                <button [style.background]="getVariantHex(index)" class="w-6 aspect-square rounded-md"></button>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2">
+                <ng-container *ngIf="item.get('photo')?.value">
+                  <ng-container *ngFor="let img of item.get('photo')?.value; let photoIndex = index">
+                    <div class="relative w-24 h-24 overflow-hidden aspect-square rounded-md">
+                      <img [src]="img" alt="" class="w-full h-full object-cover rounded-md">
+
+                      <button (click)="removeVariantImage(index, photoIndex)"
+                        class="absolute top-0 right-0 -translate-y-1 z-10">
+                        <i class="fa-solid fa-circle-minus text-red "></i>
+                      </button>
+                    </div>
+                  </ng-container>
+                </ng-container>
+
+                <div>
+                  <input #imageSelector (change)="onFileSelected($event, index)" multiple accept="image/*" type="file"
+                    class="hidden">
+                  <button (click)="imageSelector.click()"
+                    class="w-24 aspect-square border-2 border-dashed border-gray-300 rounded-md">
+                    <i class="fa-solid fa-plus text-gray-400"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
         </div>
 
         <!-- <div class="shadow-card rounded-md p-5 bg-white">

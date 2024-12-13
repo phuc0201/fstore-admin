@@ -2,19 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
-import { ListAccountComponent } from './list-account/list-account.component';
+import { ListPromotionComponent } from './list-promotion/list-promotion.component';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: ListAccountComponent,
+    component: ListPromotionComponent,
     data: { breadcrumb: '' }
   }
 ];
 
 @NgModule({
   declarations: [
-    ListAccountComponent
+    ListPromotionComponent
   ],
   imports: [
     CommonModule,
@@ -22,4 +23,4 @@ const routes: Routes = [
     PaginationComponent
   ]
 })
-export class AccountPageModule { }
+export class PromotionPageModule { }

@@ -1,6 +1,6 @@
 <div class="bg-white shadow-card p-5 rounded-md">
   <div class="flex justify-between mb-5">
-    <input type="text" placeholder="Search product"
+    <input type="text" placeholder="Search order"
       class="border-gray-300 focus:ring-primary-hover focus:border-primary rounded-lg text-sm outline-none">
 
     <div class="flex items-center gap-4">
@@ -26,10 +26,6 @@
           </ul>
         </div>
       </div>
-      <a [routerLink]="'new'" class="p-2 px-4 bg-primary text-white rounded-lg text-sm">
-        <i class="fa-solid fa-plus"></i>
-        Add product
-      </a>
     </div>
   </div>
 
@@ -41,40 +37,42 @@
             <input type="checkbox" [checked]="false"
               class="focus:!ring-0 focus:ring-transparent focus:outline-none cursor-pointer checked:bg-primary rounded-sm">
           </th>
-          <th scope="col" class="px-6 py-3">
-            Product name
+          <th scope="col" class="uppercase px-6 py-3">
+            Code
           </th>
-          <th scope="col" class="px-6 py-3">
-            Description
+          <th scope="col" class="uppercase px-6 py-3">
+            Customer
           </th>
-          <th scope="col" class="px-6 py-3">
-            Quantity
+          <th scope="col" class="uppercase px-6 py-3">
+            Payment Method
           </th>
-          <th scope="col" class="px-6 py-3">
-            Price
+          <th scope="col" class="uppercase px-6 py-3">
+            Status
           </th>
-          <th scope="col" class="px-6 py-3">
+          <th scope="col" class="uppercase px-6 py-3">
             Action
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <tr *ngFor="let item of orders" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
           <td class="px-6 py-4">
             <input type="checkbox" [checked]="false"
               class="focus:!ring-0 focus:ring-transparent focus:outline-none cursor-pointer checked:bg-primary rounded-sm">
           </td>
-          <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {{item.name}}
+          <td scope="row" class="px-6 py-4 italic text-xs whitespace-nowrap text-primary">
+            {{item.code}}
           </td>
           <td class="px-6 py-4">
-            {{item.description}}
+            {{item.customerName}}
           </td>
           <td class="px-6 py-4">
-            {{item.quantity}}
+            {{item.payment_method}}
           </td>
           <td class="px-6 py-4">
-            {{item.price}}
+            <div class="p-1 px-2 bg-emerald-50 text-green1 border border-green1 rounded-md w-fit">
+              {{item.status}}
+            </div>
           </td>
           <td>
             <div class="w-full flex items-center justify-center gap-3 text-lg">

@@ -1,23 +1,36 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderPageComponent } from './order-page.component';
+import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
+import { FormNewOrderComponent } from './form-new-order/form-new-order.component';
+import { ListOrderComponent } from './list-order/list-order.component';
+
+const plugins = [
+  PaginationComponent,
+];
 
 const routes: Routes = [
   {
     path: '',
-    component: OrderPageComponent,
+    component: ListOrderComponent,
     data: { breadcrumb: '' }
+  },
+  {
+    path: '',
+    component: FormNewOrderComponent,
+    data: { breadcrumb: 'New' }
   }
 ];
 
 @NgModule({
   declarations: [
-    OrderPageComponent
+    ListOrderComponent,
+    FormNewOrderComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    plugins
   ]
 })
 export class OrderPageModule { }
