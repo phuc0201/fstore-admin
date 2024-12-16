@@ -19,7 +19,7 @@ const routes: Routes = [
     data: { breadcrumb: '' },
   },
   {
-    path: 'details',
+    path: 'details/:urlSlug',
     component: ProductDetailsComponent,
     data: { breadcrumb: 'Product details' },
   },
