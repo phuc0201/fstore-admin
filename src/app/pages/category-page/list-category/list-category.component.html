@@ -26,10 +26,10 @@
           </ul>
         </div>
       </div>
-      <a [routerLink]="'new'" class="p-2 px-4 bg-primary text-white rounded-lg text-sm">
+      <button (click)="openCategoryForm()" class="p-2 px-4 bg-primary text-white rounded-lg text-sm">
         <i class="fa-solid fa-plus"></i>
         Add Category
-      </a>
+      </button>
     </div>
   </div>
 
@@ -45,12 +45,6 @@
             Category
           </th>
           <th scope="col" class="uppercase px-6 py-3">
-            Total product
-          </th>
-          <th scope="col" class="uppercase px-6 py-3">
-            Total earning
-          </th>
-          <th scope="col" class="uppercase px-6 py-3">
             Action
           </th>
         </tr>
@@ -62,16 +56,7 @@
               class="focus:!ring-0 focus:ring-transparent focus:outline-none cursor-pointer checked:bg-primary rounded-sm">
           </td>
           <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            <div>
-              <span class="block">{{item.categoryName}}</span>
-              <span class="block text-xs text-gray-400 font-light">{{item.description}}</span>
-            </div>
-          </td>
-          <td class="px-6 py-4">
-            {{item.totalProducts}}
-          </td>
-          <td class="px-6 py-4">
-            {{item.totalEarning.toLocaleString("vi-VN", {style: 'currency', currency: 'VND'})}}
+            {{item.categoryName}}
           </td>
           <td>
             <div class="w-full flex items-center justify-center gap-3 text-lg">
@@ -95,4 +80,4 @@
   </div>
 </div>
 
-<app-form-new-category></app-form-new-category>
+<app-form-new-category [(isOpen)]="isOpenForm" (isAddCateSuccess)="reloadData($event)"></app-form-new-category>

@@ -1,0 +1,80 @@
+<div>
+  <div class="flex items-center justify-between shadow-card bg-white rounded-md p-5">
+    <div>
+      <h1>Order #32543</h1>
+      <span class="text-xs text-gray-400">Aug 17, 2024, 5:48 (ET)</span>
+    </div>
+    <button
+      class="p-2 px-4 rounded-md bg-orange-100 text-orange-500 text-sm transition-all active:scale-[.97] hover:shadow-card">Delete
+      Order</button>
+  </div>
+
+  <div class="mt-5 shadow-card p-5 rounded-md bg-white">
+    <h1 class="text-sm text-gray-600 font-medium mb-3">Customer Details</h1>
+
+    <div class="flex items-center gap-3">
+      <img src="https://www.refinery29.com/images/11306127.jpg" alt=""
+        class="w-10 aspect-square object-cover rounded-full">
+      <div class="">
+        <span class="block text-sm text-gray-600 font-medium">Nguyen Ba Phuoc</span>
+        <span class="block text-xs text-gray-400">Customer ID: #58909</span>
+      </div>
+    </div>
+
+    <div class="mt-5 flex items-center gap-4">
+      <div class="w-11 aspect-square rounded-full flex items-center justify-center bg-emerald-50 text-lime-500">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+      <div class="text-sm text-gray-600 font-medium">10 Orders</div>
+    </div>
+
+    <div class="flex flex-col gap-2 text-gray-500 text-sm mt-5">
+      <span class="text-sm text-gray-600 font-medium">Contact Info</span>
+      <span>Email: {{'nbphuoc@gmail.com'}}</span>
+      <span>Phone: 0987654321</span>
+    </div>
+
+    <div class="mt-5 flex items-center justify-between">
+      <h1 class="text-sm text-gray-600 font-medium mb-3">Shipping address</h1>
+      <!-- <button class="text-primary">Edit</button> -->
+    </div>
+
+    <div>
+      <span class="text-sm text-gray-600">Số 1 Võ Văn Ngân, Thủ Đức</span>
+    </div>
+  </div>
+
+  <div class="mt-5 shadow-card bg-white rounded-md p-5">
+    <h1 class="text-sm text-gray-600 font-medium mb-3">Order Details</h1>
+
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-500 uppercase bg-gray-50">
+        <th scope="col" class="px-6 py-4"></th>
+        <th scope="col" class="px-6 py-4">Product</th>
+        <th scope="col" class="px-6 py-4">Price</th>
+        <th scope="col" class="px-6 py-4">Quantity</th>
+        <th scope="col" class="px-6 py-4">Total</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of products">
+          <td class="px-6 py-4">
+            <div class="w-10 aspect-square rounded-md overflow-hidden">
+              <img [src]="item.image" alt="" class="w-full h-full object-cover rounded-md">
+            </div>
+          </td>
+          <td class="px-6 py-4">{{item.name}}</td>
+          <td class="px-6 py-4">{{item.price}}</td>
+          <td class="px-6 py-4">{{item.quantity}}</td>
+          <td class="px-6 py-4">{{item.total}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="flex justify-end border-0 border-t-[1px] border-gray-200 pt-5 text-sm font-medium text-gray-600 w-full">
+      <div class="flex flex-col gap-2">
+        <span>Subtotal: 300.000 đ</span>
+        <span>Discount: 0 đ</span>
+        <span>Total: 300.000 đ</span>
+      </div>
+    </div>
+  </div>
+</div>

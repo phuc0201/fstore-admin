@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { Paginate } from 'src/app/core/models/common/paginate.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Pagination } from 'src/app/core/models/common/paginate.model';
 
 const plugins = [
   CommonModule
@@ -14,7 +14,9 @@ const plugins = [
   imports: plugins
 })
 export class PaginationComponent implements OnInit {
-  @Input() paginate = new Paginate<any>();
+  @Input() paginate = new Pagination();
+  @Output() paginateChange = new EventEmitter<Pagination>();
+
   listOfButton: number[] = [];
   numberPageStart: number = 1;
 

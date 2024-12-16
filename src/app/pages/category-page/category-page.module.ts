@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
 import { FormNewCategoryComponent } from './form-new-category/form-new-category.component';
@@ -30,7 +31,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    plugins
+    plugins,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class CategoryPageModule { }

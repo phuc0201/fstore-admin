@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductDTO } from 'src/app/core/models/product/product.model';
+import { ToastrService } from 'ngx-toastr';
+import { Category } from 'src/app/core/models/category/category.model';
+import { ProductDTO } from 'src/app/core/models/product/product.dto';
+import { CategoryService } from 'src/app/core/services/category.service';
 import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
@@ -14,21 +17,40 @@ export class FormAddProductComponent implements OnInit {
   size: string[] = ['S', 'M', 'L', 'XL', '2XL'];
   selectedFiles: File[] = [];
   imagePreviews: string[] = [];
+  isOpenCateDropdown: boolean = false;
+  categorySelected: Category = new Category();
+  categories: Category[] = [];
+
   constructor(
     private fb: FormBuilder,
-    private productSrv: ProductService
+    private productSrv: ProductService,
+    private categorySrv: CategoryService,
+    private toastr: ToastrService
   ) {
     this.productForm = this.fb.group({
       productName: ['', [Validators.required, Validators.minLength(3)]],
       description: [''],
       price: [100000, [Validators.required, Validators.min(0)]],
-      categoryId: [1, Validators.required],
+      categoryId: [0, Validators.required],
       variants: this.fb.array([]),
     });
   }
 
   ngOnInit(): void {
     this.addVariant();
+    this.fetchCategory();
+  }
+
+  fetchCategory(): void {
+    this.categorySrv.getCategories().subscribe((res: Category[]) => {
+      this.categories = res;
+    });
+  }
+
+  selectCategory(category: Category): void {
+    this.categorySelected = category;
+    this.isOpenCateDropdown = false;
+    this.productForm.get('categoryId')?.setValue(category.categoryId);
   }
 
   onFileSelected(event: Event, variantIndex: number): void {
@@ -49,6 +71,10 @@ export class FormAddProductComponent implements OnInit {
     }
   }
 
+  fetchProducts(): void {
+    // this.productSrv
+  }
+
   addNewProduct(): void {
     if (this.productForm.valid) {
       const productDTO = new ProductDTO();
@@ -57,7 +83,13 @@ export class FormAddProductComponent implements OnInit {
       productDTO.price = this.productForm.get('price')?.value;
       productDTO.productName = this.productForm.get('productName')?.value;
       productDTO.variants = this.productForm.get('variants')?.value;
-      console.log(productDTO);
+
+      this.productSrv.createProduct(productDTO).subscribe({
+        next: (res: any) => {
+          this.toastr.success('The product has been created successfully!', 'Success');
+          console.log(res);
+        }
+      });
     }
   }
 

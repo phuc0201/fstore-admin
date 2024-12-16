@@ -1,9 +1,21 @@
 export class Paginate<T> {
   constructor(
-    public currentPage = 1,
-    public totalPage = 1,
-    public totalItem = 0,
-    public limit = 10,
     public data: T[] = [],
+    public count: number = 0,
   ) { }
+}
+
+export class Pagination {
+  currentPage: number;
+  totalPage: number;
+  limit: number;
+  constructor(
+    currentPage: number = 1,
+    totalPage: number = 1,
+    limit: number = 10
+  ) {
+    this.currentPage = currentPage;
+    this.totalPage = totalPage;
+    this.limit = limit;
+  }
 }

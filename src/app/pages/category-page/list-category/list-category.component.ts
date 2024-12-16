@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesDummyData } from 'src/app/core/dummy-data/category.data';
+import { Category } from 'src/app/core/models/category/category.model';
+import { CategoryService } from 'src/app/core/services/category.service';
 
 @Component({
   selector: 'app-list-category',
@@ -7,9 +8,30 @@ import { CategoriesDummyData } from 'src/app/core/dummy-data/category.data';
   styleUrls: ['./list-category.component.scss']
 })
 export class ListCategoryComponent implements OnInit {
-  categories = CategoriesDummyData;
+  isOpenForm: boolean = false;
+  categories: Category[] = [];
+
+  constructor(
+    private categoryService: CategoryService,
+  ) { }
 
   ngOnInit(): void {
+    this.fetchCategory();
+  }
 
+  openCategoryForm(): void {
+    this.isOpenForm = true;
+  }
+
+  fetchCategory(): void {
+    this.categoryService.getCategories().subscribe((res: Category[]) => {
+      this.categories = res;
+    });
+  }
+
+  reloadData(isReload: boolean): void {
+    if (isReload) {
+      this.fetchCategory();
+    }
   }
 }

@@ -1,3 +1,50 @@
-<div>
+<div
+  class="z-10 w-[500px] fixed top-0 right-0 bottom-0 duration-300 transition-all bg-white flex flex-col justify-between"
+  [ngClass]="isOpen ? 'translate-x-0' : 'translate-x-full'">
+  <div class="flex items-center gap-5 p-3">
+    <button (click)="closeDrawer()" class="w-10 aspect-square hover:bg-gray-100 text-xl rounded-md text-gray-700">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <h1 class="text-lg m-0 text-gray-600">Add category</h1>
+  </div>
 
+  <div class="flex-1 p-5">
+    <form [formGroup]="cateForm" class="">
+      <div class="mb-5">
+        <label for="title" class="text-sm mb-3 text-gray-500">Title</label>
+        <input formControlName="categoryName" id="title" type="text" placeholder="Enter category title"
+          (keydown.enter)="addCategory()"
+          class="placeholder:text-sm placeholder:text-gray-300 border-gray-300 transition-all w-full rounded-md focus:border-primary focus:ring-primary-hover outline-none">
+      </div>
+      <div>
+        <label for="title" class="text-sm mb-3 text-gray-500">Parent</label>
+
+        <div (blur)="isOpenCateDropdown = false" class="relative group">
+          <button type="button" (click)="isOpenCateDropdown=!isOpenCateDropdown"
+            class="h-[42px] flex items-center justify-between w-full border border-gray-300 rounded-md p-2 px-4 text-sm select-none cursor-pointer">
+            <span class="text-gray-300 ">{{ parentCateSelected.categoryName !== '' ? parentCateSelected.categoryName :
+              'Select parent category'}}</span>
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
+
+          <ul
+            class="absolute top-full translate-y-1 left-0 right-0 bg-white rounded-md shadow-card max-h-96 overflow-y-auto"
+            [ngClass]="isOpenCateDropdown ? 'block' : 'hidden'">
+            <li *ngFor="let item of categories" (click)="selectCategoryParent(item)"
+              class="hover:bg-gray-100 p-2 px-4 rounded-md text-start cursor-pointer">
+              {{item.categoryName}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </form>
+
+    <div class="mt-5 w-full flex items-center justify-end">
+      <button (click)="addCategory()" class="mr-3 p-2 px-3 rounded-md bg-primary text-white">Add</button>
+      <button class="p-2 px-3 rounded-md bg-rose-200 text-red">Discard</button>
+    </div>
+  </div>
 </div>
+
+<div (click)="closeDrawer()" class="transition-all duration-300 overplay fixed top-0 bottom-0 right-0 left-0 bg-black"
+  [ngClass]="isOpen ? 'opacity-50 block' : 'hidden opacity-0'"></div>

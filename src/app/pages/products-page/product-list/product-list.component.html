@@ -1,7 +1,13 @@
 <div class="bg-white shadow-card p-5 rounded-md">
   <div class="flex justify-between mb-5">
-    <input type="text" placeholder="Search product"
-      class="border-gray-300 focus:ring-primary-hover focus:border-primary rounded-lg text-sm outline-none">
+    <div class="flex items-center gap-2">
+      <input type="text" placeholder="Search product"
+        class="border-gray-300 focus:ring-primary-hover focus:border-primary rounded-lg text-sm outline-none">
+
+      <button (click)="fetchProducts()" class="group bg-primary w-[36px] aspect-square text-white rounded-lg">
+        <i class="fa-solid fa-rotate" [ngClass]="isLoading ? 'animate-spin' : ''"></i>
+      </button>
+    </div>
 
     <div class="flex items-center gap-4">
       <div>
@@ -48,7 +54,7 @@
             Description
           </th>
           <th scope="col" class="px-6 py-3">
-            Quantity
+            Sold
           </th>
           <th scope="col" class="px-6 py-3">
             Price
@@ -59,41 +65,52 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-          <td class="px-6 py-4">
-            <input type="checkbox" [checked]="false"
-              class="focus:!ring-0 focus:ring-transparent focus:outline-none cursor-pointer checked:bg-primary rounded-sm">
-          </td>
-          <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {{item.name}}
-          </td>
-          <td class="px-6 py-4">
-            {{item.description}}
-          </td>
-          <td class="px-6 py-4">
-            {{item.quantity}}
-          </td>
-          <td class="px-6 py-4">
-            {{item.price}}
-          </td>
-          <td>
-            <div class="w-full flex items-center justify-center gap-3 text-lg">
-              <button class="hover:text-primary">
-                <a [routerLink]="'details'">
-                  <i class="fa-regular fa-pen-to-square"></i>
-                </a>
-              </button>
-              <button class="hover:text-red1">
-                <i class="fa-regular fa-trash-can"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
+        <ng-container *ngIf="products.data.length > 0">
+          <tr *ngFor="let item of products.data" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <td class="px-6 py-4">
+              <input type="checkbox" [checked]="false"
+                class="focus:!ring-0 focus:ring-transparent focus:outline-none cursor-pointer checked:bg-primary rounded-sm">
+            </td>
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              {{item.productName}}
+            </td>
+            <td class="px-6 py-4">
+              <div class="line-clamp-1 overflow-hidden">
+                {{item.description}}
+              </div>
+            </td>
+            <td class="px-6 py-4">
+              {{item.sold}}
+            </td>
+            <td class="px-6 py-4">
+              {{item.price}}
+            </td>
+            <td>
+              <div class="w-full flex items-center justify-center gap-3 text-lg">
+                <button class="hover:text-primary">
+                  <a [routerLink]="'details'">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </a>
+                </button>
+                <button class="hover:text-red1">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-container *ngIf="products.data.length === 0">
+          <div *ngIf="isLoading">
+
+          </div>
+          <div *ngIf="!isLoading"></div>
+        </ng-container>
       </tbody>
     </table>
   </div>
 
   <div class="w-full flex justify-end mt-10">
-    <app-pagination></app-pagination>
+    <app-pagination [paginate]="paginate"></app-pagination>
   </div>
 </div>
