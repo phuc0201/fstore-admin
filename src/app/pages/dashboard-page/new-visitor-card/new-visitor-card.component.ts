@@ -24,7 +24,7 @@ export type ChartOptions = {
   styleUrls: ['./new-visitor-card.component.scss']
 })
 export class NewVisitorCardComponent {
-  @ViewChild('chart') chart!: ChartComponent;
+  @ViewChild('visitorChart') chart!: ChartComponent;
   chartOptions: Partial<ChartOptions> = {
     series: [
       {

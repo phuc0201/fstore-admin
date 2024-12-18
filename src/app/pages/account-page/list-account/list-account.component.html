@@ -51,10 +51,7 @@
             Email
           </th>
           <th scope="col" class="uppercase px-6 py-3">
-            ORDER
-          </th>
-          <th scope="col" class="uppercase px-6 py-3">
-            total spent
+            Phone
           </th>
           <th scope="col" class="uppercase px-6 py-3">
             Action
@@ -67,20 +64,17 @@
             <input type="checkbox" [checked]="false"
               class="focus:!ring-0 focus:ring-transparent focus:outline-none cursor-pointer checked:bg-primary rounded-sm">
           </td>
-          <td scope="row" class="px-6 py-4 italic text-xs whitespace-nowrap text-primary">
-            {{item.id}}
+          <td scope="row" class="px-6 py-4 text-xs whitespace-nowrap">
+            {{item.userId}}
           </td>
           <td class="px-6 py-4">
-            {{item.fullname}}
+            {{item.fullName}}
           </td>
           <td class="px-6 py-4">
             {{item.email}}
           </td>
           <td class="px-6 py-4">
-            {{item.order}}
-          </td>
-          <td class="px-6 py-4">
-            {{item.total_spent.toLocaleString("vi-VN", {style: 'currency', currency: 'VND'})}}
+            {{item.phoneNumber}}
           </td>
           <td>
             <div class="w-full flex items-center justify-center gap-3 text-lg">

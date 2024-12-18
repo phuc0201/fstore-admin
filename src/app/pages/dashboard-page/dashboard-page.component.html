@@ -1,8 +1,8 @@
 <section class="grid grid-cols-3 gap-5">
   <div class="relative h-full col-span-1 shadow-card p-6 rounded-md bg-white flex flex-col justify-start">
-    <h3 class="text-gray-700 font-medium">Congratulations Katie! 🎉</h3>
-    <span class="text-sm text-gray-400 mb-4">Best seller of the month</span>
-    <div class="text-primary font-semibold">$48.9k</div>
+    <h3 class="text-gray-700 font-medium mb-5">Congratulations Phuoc! 🎉</h3>
+    <!-- <span class="text-sm text-gray-400 mb-4">Best seller of the month</span> -->
+    <div class="text-primary font-semibold">500.000 đ</div>
     <span class="text-sm text-gray-400 mb-4">78% of target 🚀</span>
     <button class="w-fit bg-primary text-white p-2 px-3 rounded-md text-xs">View
       sales</button>
@@ -14,26 +14,19 @@
 
   <div class="col-span-2 bg-white flex items-center rounded-md shadow-card">
     <div class="w-1/2 p-6 border-0 border-r border-gray-200">
-      <div class="flex justify-between">
-        <div class="text-lg text-gray-600 font-medium">New visitors</div>
-        <div class="text-gray-400 text-sm">Last Week</div>
-      </div>
-
-      <div class="relative flex justify-between items-end">
-        <div>
-          <div class="text-xl font-medium text-gray-600">23%</div>
-          <div class="text-red text-xs font-bold">
-            <i class="fa-solid fa-arrow-down"></i>
-            <span>-13.24%</span>
-          </div>
-        </div>
-        <div class="h-32"></div>
-        <app-new-visitor-card></app-new-visitor-card>
-      </div>
+      <app-new-visitor-card></app-new-visitor-card>
     </div>
 
-    <div>
-
+    <div class="w-1/2 p-6 border-0 border-r border-gray-200">
+      <app-user-active-card></app-user-active-card>
     </div>
   </div>
+</section>
+
+<section>
+  <app-sales-overview></app-sales-overview>
+</section>
+
+<section class="mt-5">
+  <app-top-products></app-top-products>
 </section>

@@ -48,17 +48,19 @@ export class Variant {
   variantColor: string;
   variantHex: string;
   sizeStockQuantity: SizeStockQuantity;
-
+  photos?: Photo[];
   constructor(
     variantId: number,
     variantColor: string,
     variantHex: string,
-    sizeStockQuantity: SizeStockQuantity
+    sizeStockQuantity: SizeStockQuantity,
+    photos?: Photo[]
   ) {
     this.variantId = variantId,
       this.variantColor = variantColor,
       this.variantHex = variantHex,
       this.sizeStockQuantity = sizeStockQuantity;
+    this.photos = photos;
   }
 }
 
@@ -84,5 +86,22 @@ export class SizeStockQuantity {
     this.l = l;
     this.xl = xl;
     this.xxl = xxl;
+  }
+}
+
+
+export class Photo {
+  photoId: number;
+  position: number;
+  imgUrl: string;
+
+  constructor(
+    photoId: number,
+    position: number,
+    imgUrl: string,
+  ) {
+    this.photoId = photoId;
+    this.position = position;
+    this.imgUrl = imgUrl;
   }
 }

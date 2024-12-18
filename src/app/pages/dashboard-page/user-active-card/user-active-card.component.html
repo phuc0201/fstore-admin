@@ -1,1 +1,23 @@
-<p>user-active-card works!</p>
+<div class="flex justify-between">
+  <div class="text-lg text-gray-600 font-medium">Activity</div>
+  <div class="text-gray-400 text-sm">Last Week</div>
+</div>
+
+<div class="relative flex justify-between items-end">
+  <div>
+    <div class="text-xl font-medium text-gray-600">80%</div>
+    <div class="text-green text-xs font-bold">
+      <i class="fa-solid fa-arrow-up"></i>
+      <span>24.8%</span>
+    </div>
+  </div>
+  <div class="h-32"></div>
+  <div id="userActiveChart" class="absolute right-0 -bottom-6">
+    <apx-chart
+      *ngIf="chartOptions.fill && chartOptions.colors && chartOptions.series && chartOptions.chart && chartOptions.xaxis && chartOptions.stroke && chartOptions.dataLabels && chartOptions.yaxis && chartOptions.legend && chartOptions.grid"
+      [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+      [stroke]="chartOptions.stroke" [dataLabels]="chartOptions.dataLabels" [legend]="chartOptions.legend"
+      [colors]="chartOptions.colors" [yaxis]="chartOptions.yaxis" [grid]="chartOptions.grid"
+      [fill]="chartOptions.fill"></apx-chart>
+  </div>
+</div>

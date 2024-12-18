@@ -6,6 +6,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { DashboardPageComponent } from './dashboard-page.component';
 import { NewVisitorCardComponent } from './new-visitor-card/new-visitor-card.component';
 import { UserActiveCardComponent } from './user-active-card/user-active-card.component';
+import { SalesOverviewComponent } from './sales-overview/sales-overview.component';
+import { TopProductsComponent } from './top-products/top-products.component';
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +20,9 @@ const routes: Routes = [
   declarations: [
     DashboardPageComponent,
     NewVisitorCardComponent,
-    UserActiveCardComponent
+    UserActiveCardComponent,
+    SalesOverviewComponent,
+    TopProductsComponent
   ],
   imports: [
     CommonModule,

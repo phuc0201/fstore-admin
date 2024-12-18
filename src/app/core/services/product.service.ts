@@ -20,4 +20,12 @@ export class ProductService {
   getProducts(page: number = 1, skip: number = 0): Observable<any> {
     return this.http.get<ProductDTO>(this.baseUrl + `?page=${page}&skip=${skip}`);
   }
+
+  getProduct(productId: number): Observable<any> {
+    return this.http.get('http://47.129.207.13:3000/products/' + productId);
+  }
+
+  updatePhoto(variantId: number, photo: FormData): Observable<any> {
+    return this.http.patch(this.baseUrl + '/variant/' + variantId + '/photos', photo);
+  }
 }

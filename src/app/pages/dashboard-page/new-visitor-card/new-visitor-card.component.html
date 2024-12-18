@@ -1,8 +1,23 @@
-<div id="chart" class="absolute right-0 -bottom-6">
-  <apx-chart
-    *ngIf="chartOptions.series && chartOptions.chart && chartOptions.dataLabels && chartOptions.yaxis && chartOptions.plotOptions && chartOptions.xaxis && chartOptions.colors && chartOptions.legend && chartOptions.grid"
-    [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
-    [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis"
-    [legend]="chartOptions.legend" [colors]="chartOptions.colors" [grid]="chartOptions.grid">
-  </apx-chart>
+<div class="flex justify-between">
+  <div class="text-lg text-gray-600 font-medium">New visitors</div>
+  <div class="text-gray-400 text-sm">Last Week</div>
+</div>
+
+<div class="relative flex justify-between items-end">
+  <div>
+    <div class="text-xl font-medium text-gray-600">23%</div>
+    <div class="text-red text-xs font-bold">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>-13.24%</span>
+    </div>
+  </div>
+  <div class="h-32"></div>
+  <div id="visitorChart" class="absolute right-0 -bottom-6">
+    <apx-chart
+      *ngIf="chartOptions.series && chartOptions.chart && chartOptions.dataLabels && chartOptions.yaxis && chartOptions.plotOptions && chartOptions.xaxis && chartOptions.colors && chartOptions.legend && chartOptions.grid"
+      [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis"
+      [legend]="chartOptions.legend" [colors]="chartOptions.colors" [grid]="chartOptions.grid">
+    </apx-chart>
+  </div>
 </div>
